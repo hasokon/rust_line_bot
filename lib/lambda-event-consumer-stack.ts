@@ -16,6 +16,9 @@ export class LambdaEventConsumerStack extends cdk.Stack {
       memorySize: 128,
       timeout: Duration.seconds(5),
       manifestPath: './event_consumer/Cargo.toml',
+      environment: {
+        'RUST_LOG': 'DEBUG'
+      }
     });
   }
 }
