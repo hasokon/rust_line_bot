@@ -6,7 +6,7 @@ use log::{debug};
 async fn handler(event: LambdaEvent<ApiGatewayProxyRequest>)
                  -> Result<ApiGatewayProxyResponse, lambda_runtime::Error>
 {
-    debug!("Event: {:#?}", event);
+    debug!("Event: {:?}", event);
 
     Ok(ApiGatewayProxyResponse {
         status_code: 200,
