@@ -695,6 +695,7 @@ version = "0.1.0"
 dependencies = [
  "aws-config",
  "aws_lambda_events",
+ "chrono",
  "dotenvy",
  "env_logger",
  "lambda_runtime",
