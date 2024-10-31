@@ -24,13 +24,13 @@ export class LambdaEventConsumerStack extends cdk.Stack {
             manifestPath: './event_consumer/Cargo.toml',
             runtime: 'provided.al2023',
             bundling: {
+                environment: {
+                    RUSTFLAGS: '-C linker=musl-gcc',
+                },
                 cargoLambdaFlags: [
                     '--target',
                     'x86_64-unknown-linux-musl',
-                    '--config',
-                    'rustflags="-C linker=musl-gcc"'
                 ],
-
             },
             environment: {
                 'RUST_LOG': 'DEBUG',
