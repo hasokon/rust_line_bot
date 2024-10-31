@@ -24,7 +24,5 @@ fn execute_error<T: ToString>(s: T) -> Result<(), Box<dyn Error + Send + Sync + 
 }
 
 pub trait Executor {
-    fn should_process(&self, event: &Event) -> bool;
-
     async fn execute(&self, event: &Event) -> Result<(), lambda_runtime::Error>;
 }
