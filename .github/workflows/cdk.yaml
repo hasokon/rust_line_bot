@@ -27,6 +27,7 @@ jobs:
 
       - name: Install necessary packages
         run: |
+          sudo apt-get update
           sudo apt-get install pkg-config libssl-dev
 
       - name: Deploy using CDK
