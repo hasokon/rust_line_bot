@@ -12,3 +12,6 @@ cdk.out
 
 # dotenv
 .env
+
+# rust
+Cargo.lock
