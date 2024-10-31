@@ -26,6 +26,8 @@ jobs:
           npm install
 
       - name: Deploy using CDK
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
         run: |
           cdk bootstrap
           cdk deploy apigateway-line-bot-stack --require-approval never
