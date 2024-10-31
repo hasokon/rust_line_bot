@@ -24,9 +24,7 @@ async fn handler(event: LambdaEvent<ApiGatewayProxyRequest>)
         // 処理
         let executor = Parroting {};
         for event in request.events {
-            if executor.should_process(&event) {
-                executor.execute(&event).await?
-            }
+            executor.execute(&event).await?
         }
     } else {
         error!("Request Body not found.");
