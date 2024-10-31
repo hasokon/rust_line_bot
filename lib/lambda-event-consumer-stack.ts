@@ -10,14 +10,21 @@ export class LambdaEventConsumerStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    // todo まとめて処理できるようにしたい
+    if (!process.env.LINE_CHANNEL_ACCESS_TOKEN) {
+      throw new Error("LINE_CHANNEL_ACCESS_TOKEN is not set");
+    }
+
     this.lambdaFunction = new RustFunction(this, 'event-consumer', {
       functionName: 'lambda-line-bot-event-consumer-api',
       description: 'Lambda function for event consumer',
       memorySize: 128,
       timeout: Duration.seconds(5),
       manifestPath: './event_consumer/Cargo.toml',
+      runtime: 'provided.al2023',
       environment: {
-        'RUST_LOG': 'DEBUG'
+        'RUST_LOG': 'DEBUG',
+        'LINE_CHANNEL_ACCESS_TOKEN': process.env.LINE_CHANNEL_ACCESS_TOKEN,
       }
     });
   }

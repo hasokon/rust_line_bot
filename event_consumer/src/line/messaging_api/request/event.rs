@@ -1,4 +1,4 @@
-mod message;
+pub mod message;
 
 use chrono::{DateTime, TimeZone, Utc};
 use serde::{Deserialize, Deserializer};

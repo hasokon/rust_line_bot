@@ -1,5 +1,6 @@
 use crate::line::messaging_api::request::event::EventCommonField;
 use serde::Deserialize;
+use crate::line::messaging_api::request::emoji::Emoji;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -15,15 +16,6 @@ pub struct Mentionee {
 #[serde(rename_all = "camelCase")]
 pub struct Mention {
     pub mentionees: Vec<Mentionee>,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Emoji {
-    pub index: u32,
-    pub length: u32,
-    pub product_id: String,
-    pub emoji_id: String,
 }
 
 #[derive(Debug, Deserialize)]

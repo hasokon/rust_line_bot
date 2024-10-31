@@ -1,13 +1,24 @@
 pub mod source;
 pub mod event;
+pub mod emoji;
+pub mod message;
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
+use crate::line::messaging_api::request::message::MessageObject;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct EventObjectRequest {
     pub destination: String,
     pub events: Vec<event::Event>,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ReplyMessageRequest {
+    pub reply_token: String,
+    pub messages: Vec<MessageObject>,
+    pub notification_disabled: Option<bool>,
 }
 
 #[cfg(test)]
